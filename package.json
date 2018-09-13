@@ -1,0 +1,18 @@
+{
+  "name": "YoutubeDataElectron",
+  "version": "1.0.0",
+  "description": "Get Youtube Data into Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Prasanta Karmakar",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^2.0.0"
+  }
+}
