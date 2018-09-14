@@ -1,11 +1,12 @@
 var request = require("request")
 
-const channel_id = ['UCJrOtniJ0-NWz37R30urifQ'];
+const channel_id = ['UCJrOtniJ0-NWz37R30urifQ','UCqwUrj10mAEsqezcItqvwEw'];
 const api_key = 'AIzaSyDvUmqC8paukoeuOQiO-OfmTOfcr_xTEDc'  //API Key Any Time Can be Deleted, Use your own API key
 const address = 'https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=';
 //Get DOm Element
 let drawTable = document.querySelector('#drawtable')
 let getChName = document.getElementById('getchname');
+let cardContainer = document.getElementById('cardcontainer');
 
 
 getChName.addEventListener('click', () => {
@@ -23,7 +24,7 @@ getChName.addEventListener('click', () => {
 });
 
 function dataRefresh() {
-    if(channel_id.length != 0){
+    if (channel_id.length != 0) {
         for (var i = 0; i < channel_id.length; i++) {
             const url = `${address}${channel_id[i]}&key=${api_key}`;
             makeRequest(url);
@@ -49,6 +50,8 @@ function makeRequest(uri) {
 dataRefresh();
 setInterval(dataRefresh, 5000);
 
+const cardMain = document.getElementById('cardmain');
+
 function appendDomData(body) {
 
     yt_l = body.items[0].snippet.thumbnails.medium.url;
@@ -56,24 +59,20 @@ function appendDomData(body) {
     yt_s = body.items[0].statistics.subscriberCount;
     yt_v = body.items[0].statistics.viewCount;
 
-    let tr_body = document.createElement('tr');
-    let td_logo = document.createElement('td');
-    let td_title = document.createElement('td');
-    let td_subs = document.createElement('td');
 
     if (!document.getElementById(yt_t)) {
-        tr_body.id = yt_t;
-        td_subs.id = yt_t + yt_t;
-        td_logo.innerHTML = `<img class="img-fluid" style="width:50px;height:50px" src="${yt_l}" />`;
-        td_title.innerHTML = yt_t;
-        td_subs.innerHTML += yt_s;
-
-        tr_body.appendChild(td_logo);
-        tr_body.appendChild(td_title);
-        tr_body.appendChild(td_subs);
-
-        drawTable.appendChild(tr_body);
-
+        let mainCard = document.createElement('div');
+        mainCard.className = "card bg-dark";
+        // mainCard.className = "bg-dark"
+        mainCard.id = yt_t;
+        mainCard.style.width = '200px';
+        mainCard.style.cssFloat = 'left'
+        mainCard.style.margin = '10px'
+        mainCard.innerHTML = `<img class="card-img-top" src="${yt_l}" alt="Card image" style="width:100%">`;
+        mainCard.innerHTML += '<div class="card-body"></div>';
+        mainCard.innerHTML += `<h4 class="card-title">${yt_t}</h4><hr>`;
+        mainCard.innerHTML += `<p class="card-text" id="${yt_t+yt_t}">${yt_s}</p></div></div>`;
+        cardContainer.appendChild(mainCard);        
     } else {
         change_data = document.getElementById(yt_t + yt_t);
         change_data.innerHTML = yt_s;
