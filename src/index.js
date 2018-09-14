@@ -63,15 +63,14 @@ function appendDomData(body) {
     if (!document.getElementById(yt_t)) {
         let mainCard = document.createElement('div');
         mainCard.className = "card bg-dark";
-        // mainCard.className = "bg-dark"
         mainCard.id = yt_t;
         mainCard.style.width = '200px';
         mainCard.style.cssFloat = 'left'
-        mainCard.style.margin = '10px'
+        mainCard.style.marginRight = '10px'
         mainCard.innerHTML = `<img class="card-img-top" src="${yt_l}" alt="Card image" style="width:100%">`;
         mainCard.innerHTML += '<div class="card-body"></div>';
-        mainCard.innerHTML += `<h4 class="card-title">${yt_t}</h4><hr>`;
-        mainCard.innerHTML += `<p class="card-text" id="${yt_t+yt_t}">${yt_s}</p></div></div>`;
+        mainCard.innerHTML += `<h4 class="card-title">${yt_t}</h4><hr class="bg-success">`;
+        mainCard.innerHTML += `<small>Subscribers</small><h4 class="card-text" id="${yt_t+yt_t}">${yt_s}</h4></div></div>`;
         cardContainer.appendChild(mainCard);        
     } else {
         change_data = document.getElementById(yt_t + yt_t);
