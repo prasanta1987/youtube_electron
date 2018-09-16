@@ -1,6 +1,6 @@
 var request = require("request")
 
-const channel_id = ['UCJrOtniJ0-NWz37R30urifQ','UCqwUrj10mAEsqezcItqvwEw'];
+const channel_id = ['UC_x5XG1OV2P6uZZ5FSM9Ttw'];
 const api_key = 'AIzaSyDvUmqC8paukoeuOQiO-OfmTOfcr_xTEDc'  //API Key Any Time Can be Deleted, Use your own API key
 const address = 'https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=';
 //Get DOm Element
